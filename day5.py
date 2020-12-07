@@ -24,16 +24,14 @@ def main():
         seating_chart = [Seat(_) for _ in f.read().split('\n')]
     seating_chart.sort(key=lambda _: _.id) # Sorting the chart by seat ID so that we can find our seat ID
     # Initialising loop variables
-    highest_id = 0
     previous_seat = None
     my_seat = None
     for seat in seating_chart:
-        if seat.id > highest_id:
-            highest_id = seat.id
         if previous_seat and (previous_seat.id == seat.id - 2):
             my_seat = seat.id - 1
+            break
         previous_seat = seat
-    print('Highest Seat ID:', highest_id)
+    print('Highest Seat ID:', seating_chart[-1].id)
     print('My seat:        ', my_seat)
 
 
